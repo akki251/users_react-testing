@@ -7,6 +7,8 @@ const UserForm = ({ onUserAdd }) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    setEmail("");
+    setName("");
     onUserAdd({ name, email });
     // onUserAdd({ name, email, id: new Date().toISOString() });
   };

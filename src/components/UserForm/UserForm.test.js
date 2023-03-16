@@ -56,3 +56,24 @@ test("call onUserAdd, upon submitting the form", () => {
     email: "Akshansh@1gmail.com",
   });
 });
+
+test("empties the two inputs when form is submitted", async () => {
+  render(<UserForm onUserAdd={() => {}} />);
+
+  const nameInput = screen.getByRole("textbox", {
+    name: /name/i,
+  });
+  const emailInput = screen.getByRole("textbox", {
+    name: /email/i,
+  });
+  const button = screen.getByRole("button");
+  user.click(nameInput);
+  user.keyboard("jane");
+  user.click(emailInput);
+  user.keyboard("jane@jane.com");
+
+  await user.click(button);
+
+  expect(nameInput).toHaveValue("");
+  expect(emailInput).toHaveValue("");
+});

@@ -3,7 +3,7 @@ import React from "react";
 const UserList = ({ users }) => {
   const renderedUsers = users.map((user) => {
     return (
-      <tr key={user.id}>
+      <tr key={new Date().toISOString() + Math.random().toString()}>
         <td>{user.name}</td>
         <td> {user.email} </td>
       </tr>
@@ -18,7 +18,7 @@ const UserList = ({ users }) => {
           <th>Email</th>
         </tr>
       </thead>
-      <tbody>{renderedUsers}</tbody>
+      <tbody >{renderedUsers}</tbody>
     </table>
   );
 };
